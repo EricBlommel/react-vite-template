@@ -1,0 +1,15 @@
+{
+  "translation": {
+    "language": {
+      "english": "English",
+      "german": "German"
+    },
+    "heroSection": {
+      "headline": "A template for faster setup of React projects with Vite",
+      "description": "This project is using React, Vite, Mantine UI, Emotion, i18next and React Router",
+      "button": {
+        "getStarted": "Get started"
+      }
+    }
+  }
+}

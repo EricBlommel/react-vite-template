@@ -1,0 +1,15 @@
+{
+  "translation": {
+    "language": {
+      "english": "Englisch",
+      "german": "Deutsch"
+    },
+    "heroSection": {
+      "headline": "Eine Vorlage für schnelleres Aufsetzen von React Projekten mit Vite",
+      "description": "Dieses Projekt verwendet React, Vite, Mantine UI, Emotion, i18next und React Router",
+      "button": {
+        "getStarted": "Loslegen"
+      }
+    }
+  }
+}

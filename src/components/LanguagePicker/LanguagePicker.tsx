@@ -2,15 +2,20 @@ import { useState } from 'react';
 import { createStyles, UnstyledButton, Menu, Image, Group } from '@mantine/core';
 import { IconChevronDown } from '@tabler/icons';
 import images from './images';
+import useLanguage from "../../contexts/language/useLanguage";
+import {useTranslation} from "react-i18next";
 
-const data = [
-    { label: 'English', image: images.english },
-    { label: 'German', image: images.german },
-];
+type Language = {label: string, languageKey: string, image: string};
+
+const languageMap: {[key: string]: Language} = {
+    'en' : {label: 'English', languageKey: 'language.english', image: images.english},
+    'de' : {label: 'German', languageKey: 'language.german', image: images.german}
+}
 
 const useStyles = createStyles((theme, { opened }: { opened: boolean }) => ({
     control: {
         width: 140,
+        height: 34,
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -43,14 +48,16 @@ const useStyles = createStyles((theme, { opened }: { opened: boolean }) => ({
 export function LanguagePicker() {
     const [opened, setOpened] = useState(false);
     const { classes } = useStyles({ opened });
-    const [selected, setSelected] = useState(data[0]);
-    const items = data.map((item) => (
+    const {language, setLanguage} = useLanguage();
+    const {t} = useTranslation()
+
+    const languages = Object.entries(languageMap).map((language: [string, Language]) => (
         <Menu.Item
-            icon={<Image src={item.image} width={18} height={18} />}
-            onClick={() => setSelected(item)}
-            key={item.label}
+            icon={<Image src={language[1].image} width={18} height={18} />}
+            onClick={() => setLanguage(language[0])}
+            key={language[0]}
         >
-            {item.label}
+            <>{t(language[1].languageKey)}</>
         </Menu.Item>
     ));
 
@@ -64,13 +71,13 @@ export function LanguagePicker() {
             <Menu.Target>
                 <UnstyledButton className={classes.control}>
                     <Group spacing="xs">
-                        <Image src={selected.image} width={22} height={22} />
-                        <span className={classes.label}>{selected.label}</span>
+                        <Image src={languageMap[language].image} width={16} height={16} />
+                        <span className={classes.label}>{t(languageMap[language].languageKey) as string}</span>
                     </Group>
                     <IconChevronDown size={16} className={classes.icon} stroke={1.5} />
                 </UnstyledButton>
             </Menu.Target>
-            <Menu.Dropdown>{items}</Menu.Dropdown>
+            <Menu.Dropdown>{languages}</Menu.Dropdown>
         </Menu>
     );
 }

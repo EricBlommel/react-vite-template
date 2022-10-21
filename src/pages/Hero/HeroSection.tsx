@@ -1,5 +1,7 @@
 import {createStyles, Container, Text, Button, Group} from '@mantine/core';
 import {IconBrandGithub} from "@tabler/icons";
+import {useTranslation} from "react-i18next";
+import {Highlight} from "@mantine/core";
 
 const BREAKPOINT = '@media (max-width: 755px)';
 
@@ -63,19 +65,25 @@ const useStyles = createStyles((theme) => ({
 
 export function HeroSection() {
     const {classes} = useStyles();
+    const {t} = useTranslation();
 
     return (
         <Container size={700} className={classes.inner}>
-            <h1 className={classes.title}>
-                A{' '}
-                <Text component="span" variant="gradient" inherit>
-                    template
-                </Text>{' '}
-                for faster setup of React projects with Vite
-            </h1>
+            <Highlight
+                component="h1"
+                className={classes.title}
+                highlight={['Vorlage', 'template']}
+                highlightStyles={(theme) => ({
+                    backgroundImage: theme.fn.gradient(),
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                })}
+            >
+                {t("heroSection.headline")}
+            </Highlight>
 
             <Text className={classes.description} color="dimmed">
-                This project is using React, Vite, Mantine UI, Emotion, i18next and React Router
+                <>{t("heroSection.description")}</>
             </Text>
 
             <Group className={classes.controls}>
@@ -84,7 +92,7 @@ export function HeroSection() {
                     className={classes.control}
                     variant="gradient"
                 >
-                    Get started
+                    <>{t("heroSection.button.getStarted")}</>
                 </Button>
 
                 <Button
