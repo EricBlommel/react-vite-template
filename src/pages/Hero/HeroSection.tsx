@@ -2,6 +2,7 @@ import {createStyles, Container, Text, Button, Group} from '@mantine/core';
 import {IconBrandGithub} from "@tabler/icons";
 import {useTranslation} from "react-i18next";
 import {Highlight} from "@mantine/core";
+import {useNavigate} from "react-router-dom";
 
 const BREAKPOINT = '@media (max-width: 755px)';
 
@@ -66,6 +67,7 @@ const useStyles = createStyles((theme) => ({
 export function HeroSection() {
     const {classes} = useStyles();
     const {t} = useTranslation();
+    const navigate = useNavigate();
 
     return (
         <Container size={700} className={classes.inner}>
@@ -91,6 +93,7 @@ export function HeroSection() {
                     size="xl"
                     className={classes.control}
                     variant="gradient"
+                    onClick={() => navigate("notFound")}
                 >
                     <>{t("heroSection.button.getStarted")}</>
                 </Button>

@@ -6,8 +6,10 @@ import LanguageProvider from "./contexts/language/LanguageProvider";
 import {I18nextProvider} from "react-i18next";
 import i18n from "./i18n";
 import {useLocalStorage} from "./hooks/useLocalStorage";
+import {Route, Routes} from "react-router-dom";
+import {NotFound} from "./components/ErrorPages/NotFound/NotFound";
 
-function App() {
+export default function App() {
     const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>("colorScheme", "light")
     const toggleColorScheme = (value?: ColorScheme) =>
         setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
@@ -19,15 +21,18 @@ function App() {
                     <MantineProvider withNormalizeCSS withGlobalStyles
                                      theme={{
                                          colorScheme: colorScheme,
-                                         defaultGradient: {from: '#f54b64', to: '#f78361', deg: 20}
+                                         defaultGradient: {from: '#f54b64', to: '#f78361', deg: 20},
+                                         primaryColor: 'red'
                                      }}>
                         <AppHeader/>
-                        <HeroSection/>
+                        <Routes>
+                            <Route path="/" element={<HeroSection/>}/>
+
+                            <Route path="/*" element={<NotFound/>}/>
+                        </Routes>
                     </MantineProvider>
                 </ColorSchemeProvider>
             </I18nextProvider>
         </LanguageProvider>
     )
 }
-
-export default App

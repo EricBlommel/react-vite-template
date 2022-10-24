@@ -10,6 +10,13 @@
       "button": {
         "getStarted": "Loslegen"
       }
+    },
+    "errorPage": {
+      "notFound": {
+        "headline": "Hier gibt es nichts zu sehen",
+        "description": "Diese Seite existiert nicht. Möglicherweise haben Sie sich bei der Adresse vertippt oder die Seite wurde auf eine andere URL verschoben. Wenn Sie der Meinung sind, dass dies ein Fehler ist, wenden Sie sich an den Support.",
+        "button": "Zurück zu Startseite"
+      }
     }
   }
 }

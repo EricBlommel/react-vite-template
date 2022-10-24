@@ -2,6 +2,7 @@ import {createStyles, Header, Group, ActionIcon, Container, useMantineColorSchem
 import {IconSun, IconMoonStars} from '@tabler/icons';
 import {Logo} from "../../components/_logo";
 import {LanguagePicker} from "../../components/LanguagePicker/LanguagePicker";
+import {Link} from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
 
@@ -42,27 +43,27 @@ const useStyles = createStyles((theme) => ({
 
     linkActive: {
         '&, &:hover': {
-            backgroundColor: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).background,
-            color: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).color,
+            backgroundColor: theme.fn.variant({variant: 'light', color: theme.primaryColor}).background,
+            color: theme.fn.variant({variant: 'light', color: theme.primaryColor}).color,
         },
     },
 }));
 
-interface HeaderProps {}
-
 export function AppHeader() {
-    const { classes } = useStyles();
-    const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+    const {classes} = useStyles();
+    const {colorScheme, toggleColorScheme} = useMantineColorScheme();
 
     return (
         <Header height={60} fixed>
             <Container className={classes.inner}>
-                <Logo colorScheme={colorScheme} size={60} />
+                <Link to="/">
+                    <Logo colorScheme={colorScheme} size={60}/>
+                </Link>
 
                 <Group className={classes.actionButton} position="right" noWrap>
                     <LanguagePicker/>
                     <ActionIcon size="lg" onClick={() => toggleColorScheme()}>
-                        {colorScheme === 'dark' ? <IconSun size={16} /> : <IconMoonStars size={16} />}
+                        {colorScheme === 'dark' ? <IconSun size={16}/> : <IconMoonStars size={16}/>}
                     </ActionIcon>
                 </Group>
             </Container>
