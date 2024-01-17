@@ -66,7 +66,7 @@ export function NotFound() {
                         <>{t("errorPage.notFound.description")}</>
                     </Text>
                     <Group position="center">
-                        <Button size="md" variant="gradient" onClick={() => navigate('/')}>
+                        <Button size="md" variant="gradient" onClick={() => navigate('/react-vite-template')}>
                             <>{t("errorPage.notFound.button")}</>
                         </Button>
                     </Group>
