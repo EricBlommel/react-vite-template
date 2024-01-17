@@ -56,7 +56,7 @@ export function AppHeader() {
     return (
         <Header height={60} fixed>
             <Container className={classes.inner}>
-                <Link to="/">
+                <Link to="/react-vite-template">
                     <Logo colorScheme={colorScheme} size={60}/>
                 </Link>
 

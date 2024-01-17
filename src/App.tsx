@@ -26,7 +26,7 @@ export default function App() {
                                      }}>
                         <AppHeader/>
                         <Routes>
-                            <Route path="/" element={<HeroSection/>}/>
+                            <Route path="/react-vite-template" element={<HeroSection/>}/>
 
                             <Route path="/*" element={<NotFound/>}/>
                         </Routes>
